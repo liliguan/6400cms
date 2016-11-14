@@ -12,6 +12,7 @@
 	} else {
 		$incident_exist=false;
 	}
+	mysqli_close($con);
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,7 +20,7 @@
 	<h4>Search Resource</h4>
 </head>
 <body>
-<form>
+<form action="search_results.php" method="POST">
 	<table>
 		<!-- row of keyword-->
 		<tr> <td>Keyword</td><td><input type="text" name="Keyword"></td></tr>
@@ -47,6 +48,7 @@
 								?> </select>
 			
 		</td></tr>
+		<tr> <td><a href="main_menu.php"> Cancel </a></td><td><input type="submit" value="Save" name="submit"></td></tr>
 
 	</table>
 </form>
