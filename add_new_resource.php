@@ -90,29 +90,22 @@
 		}
 	}
 
-	if ($query_success) {
-		echo "Add Resource Success";
-		
-	}else{
-		echo $_err;
-	}
-	mysqli_close($con);
-
-
-
+	
 ?>
 <html>
 	<head>
-		<meta http-equiv="refresh" content="1;url=new_resrouce.php"/>
+		<meta http-equiv="refresh" content="1;url=new_resource.php"/>
 	</head>
 	<body>
 	<?php
 		
 		if ($query_success) {
-			echo "Add Resource Success";	
+		echo "Add Resource Success";
 		}else{
-			echo $_err;
+		echo $_err;
 		}
+		mysqli_close($con);
+
 	 ?>	
 	</body>
 </html>
