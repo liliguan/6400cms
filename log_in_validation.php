@@ -1,8 +1,11 @@
-<?php session_start(); ?>
+<?php 
+session_start();
+include 'config.php';
+?>
 <html>	
 <?php 
 	//connect database
-	$con = mysqli_connect("localhost","root","123456","erms");
+	$con = mysqli_connect($mysql_info['host'],$mysql_info['user'],$mysql_info["pwd"],$mysql_info['dbname']);
 	if (!$con) {
 		die ('Could not connect:'.mysqli_error());
 	}

@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php
+	include 'header.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +15,7 @@
 	else {
 		$username=$_SESSION[session_id()]['Username'];
 	}
-	$con = mysqli_connect("localhost","root","123456","erms");
+	$con = mysqli_connect($mysql_info['host'],$mysql_info['user'],$mysql_info['pwd'],$mysql_info['dbname']);
 	$query_getid="select max(incidentid) as max from incident";
 	$result_getid=mysqli_query($con,$query_getid);
 	 
