@@ -1,13 +1,7 @@
 <?php
 	include 'header.php';
-	session_start();
-	if ($_SESSION['currentid']!=session_id()) {
-		header("log_in.php");
-		exit;
-	}
-	else {
-		$username=$_SESSION[session_id()]['Username'];
-	}
+	
+	$username=$_SESSION[session_id()]['Username'];
 	$con = mysqli_connect($mysql_info['host'],$mysql_info['user'],$mysql_info['pwd'],$mysql_info['dbname']);
 	$query_getid="select max(resourceid) as max from resource";
 	$result_getid=mysqli_query($con,$query_getid);
