@@ -18,7 +18,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script type="text/javascript" src="jq.js"></script>
+	<script type="text/javascript" src="js/jq.js"></script>
+	<script type="text/javascript" src="js/func.js"></script>
+
 	<title></title>
 </head>
 <body>
@@ -27,89 +29,35 @@
 	<table>
 	<!-- Main Form -->
 	<tr><td> Incident ID</td><td> <?php echo $new_id ?></td></tr>
-	<tr> <td> Date Format:yyyy-mm-dd</td> <td><input type="text" name="IncidentDate"> </td><td> <font color="red"> </font></td></tr>
-	<tr> <td> Description </td><td> <input type="text" name ="IncidentDescription" > </td><td> <font color="red"> </font></td></tr> 
-	<tr><td> Location:Latitude</td><td><input type="text" name="IncidentLatitude"> </td> <td><font color="red"> </font></td></tr>
-	<tr><td> Location:Longitude</td><td> <input type="text" name="IncidentLongitude"></td><td> <font color="red"> </font></td></tr>
+	<tr> <td> Date Format:yyyy-mm-dd</td> <td><input type="text" name="IncidentDate" id="Date"> </td><td> <font color="red"> </font></td></tr>
+	<tr> <td> Description </td><td> <input type="text" name ="IncidentDescription" id="Description"> </td><td> <font color="red"> </font></td></tr> 
+	<tr><td> Location:Latitude</td><td><input type="text" name="IncidentLatitude" id="Latitude"> </td> <td><font color="red"> </font></td></tr>
+	<tr><td> Location:Longitude</td><td> <input type="text" name="IncidentLongitude" id="Longitude"></td><td> <font color="red"> </font></td></tr>
 	<tr><td> <input type="submit" value="Submit" name="submit"></td><td><a href="main_menu.php">Main Menu</a></td></tr>
 	</table>
 	</form>
 <script>
 		error_1 = 'Invalid Input';
 		
-
-		////// functions
-		function check_empty(obj, error_text)
-		{
-			if(obj.val().length <= 0 )
-			{
-				return prevent(obj,true, error_text);	
-			}else{
-				return prevent(obj,false, error_text);
+		$("input#Date").blur(function(){
+			res_empty = check_empty($(this), error_1);
+			if( !res_empty ){
+				return;
 			}
-		}
-
-		// check type of the value
-		function check_type(obj, type, error_text)
-		{
-			if( type == 'float'){
-				if(obj.val().match( /^-{0,1}[0-9]{1,3}\.[0-9]{1,9}$/) == null ){
-					return prevent(obj,true, error_text);
-				}
+			res_type = check_type( $(this), 'date', error_1 );
+			if( !res_type ){
+				return;
 			}
 
-			if( type == 'int'){
-				if(obj.val().match( /^[0-9]+$/ ) == null ){
-					return prevent(obj,true, error_text);
-				}
-			}
-
-			if( type == 'string'){
-				if(obj.val().match( /^[a-z][A-Z]+$/ ) == null){
-					return prevent(obj,true, error_text);
-				}
-			}
-
-			return prevent(obj,false);
-		}
-
-
-		function check_range(obj, min, max, error_text)
-		{
-			if( obj.val() >= min && obj.val() <= max ){
-				return prevent(obj, false, error_text);
-			}else{
-				return prevent(obj, true, error_text);
-			}
-		}
-
-		/* need check date 
-
-		function check_date(obj,)
-
-		*/
-		function prevent(obj, flag, error_text)
-		{
-			if(flag){
-				$('input:submit').attr('disabled',true);
-				obj.parent().next().find('font').text(error_text);
-				return false
-			}else{
-				
-				$('input:submit').attr('disabled',false);
-				obj.parent().next().find('font').text('');
-				return true;
-			}
-		}	
-
+		});	
 		
-		$("input#IncidentDescription").blur(function (){
+		$("input#Description").blur(function(){
 			res_empty = check_empty($(this), error_1);
 			if( !res_empty ){
 				return;
 			}
 		});
-		$("input#IncidentLongitude").blur(function (){
+		$("input#Longitude").blur(function(){
 			res_empty = check_empty($(this), error_1);
 			if( !res_empty ){
 				return;
@@ -124,7 +72,7 @@
 			}
 		});
 
-		$("input#IncidentLatitude").blur(function (){
+		$("input#Latitude").blur(function(){
 			res_empty = check_empty($(this), error_1);
 			if( !res_empty ){
 				return;
@@ -139,37 +87,49 @@
 			}
 		});
 		$("form").submit(function(){
-			
+
+
+			// date check
+			res_empty = check_empty($('input#Date'), error_1);
+			if( !res_empty ){
+				return false;
+			}
+			res_type = check_type( $('input#Date'), 'date', error_1 );
+			if( !res_type ){
+				return false;
+			}
+
+
 			// description check
-			res_empty = check_empty($('input#IncidentDescription'), error_1);
+			res_empty = check_empty($('input#Description'), error_1);
 			if( !res_empty ){
 				return false;
 			}
 
 			//Latitude check
-			res_empty = check_empty($('input#IncidentLatitude'), error_1);
+			res_empty = check_empty($('input#Latitude'), error_1);
 			if( !res_empty ){
 				return false;
 			}
-			res_type = check_type($('input#IncidentLatitude'), 'float', error_1) || check_type($('input#IncidentLatitude'),'int',error_1);
+			res_type = check_type($('input#Latitude'), 'float', error_1) || check_type($('input#Latitude'),'int',error_1);
 			if( !res_type ){
 				return false;
 			}
-			res_range = check_range($('input#IncidentLatitude'), -90, 90, error_1);
+			res_range = check_range($('input#Latitude'), -90, 90, error_1);
 			if( !res_range ){
 				return false;
 			}
 
 			//longtitude check
-			res_empty = check_empty($('input#IncidentLongitude'), error_1);
+			res_empty = check_empty($('input#Longitude'), error_1);
 			if( !res_empty ){
 				return false;
 			}
-			res_type = check_type($('input#IncidentLongitude'), 'float', error_1) || check_type($('input#IncidentLongitude'),'int',error_1);
+			res_type = check_type($('input#Longitude'), 'float', error_1) || check_type($('input#Longitude'),'int',error_1);
 			if( !res_type ){
 				return false;
 			}
-			res_range = check_range($('input#IncidentLongitude'), -180, 180, error_1 );
+			res_range = check_range($('input#Longitude'), -180, 180, error_1 );
 			if( !res_range ){
 				return false;
 			}

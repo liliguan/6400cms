@@ -12,7 +12,8 @@ mysqli_close($con);
 <!DOCTYPE html>
 <html>
 <head>
-<script type="text/javascript" src="jq.js"></script>
+<script type="text/javascript" src="js/jq.js"></script>
+<script type="text/javascript" src="js/func.js"></script>
 <head>
 <body>
 	<!--Main form -->
@@ -82,68 +83,6 @@ mysqli_close($con);
 		<script>
 
 		error_1 = 'Invalid Input';
-		
-
-		////// functions
-		function check_empty(obj, error_text)
-		{
-			if(obj.val().length <= 0 )
-			{
-				return prevent(obj,true, error_text);	
-			}else{
-				return prevent(obj,false, error_text);
-			}
-		}
-
-
-
-		// check type of the value
-		function check_type(obj, type, error_text)
-		{
-			if( type == 'float'){
-				if(obj.val().match( /^-{0,1}[0-9]{1,3}\.[0-9]{1,9}$/) == null ){
-					return prevent(obj,true, error_text);
-				}
-			}
-
-			if( type == 'int'){
-				if(obj.val().match( /^[0-9]+$/ ) == null ){
-					return prevent(obj,true, error_text);
-				}
-			}
-
-			if( type == 'string'){
-				if(obj.val().match( /^[a-z][A-Z]+$/ ) == null){
-					return prevent(obj,true, error_text);
-				}
-			}
-
-			return prevent(obj,false);
-		}
-
-
-		function check_range( obj, min, max, error_text)
-		{
-			if( obj.val() >= min && obj.val() <= max ){
-				return prevent(obj, false, error_text);
-			}else{
-				return prevent(obj, true, error_text);
-			}
-		}
-
-		function prevent(obj, flag, error_text)
-		{
-			if(flag){
-				$('input:submit').attr('disabled',true);
-				obj.parent().next().find('font').text(error_text);
-				return false
-			}else{
-				
-				$('input:submit').attr('disabled',false);
-				obj.parent().next().find('font').text('');
-				return true;
-			}
-		}
 
 		////// events
 		$("input#ResourceName").blur(function (){
