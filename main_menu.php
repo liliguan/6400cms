@@ -11,7 +11,7 @@
 		$username=$_SESSION[session_id()]['Username'];
 	}
 	//connect database
-	$con = mysqli_connect("localhost","root","123456","erms");
+	$con = mysqli_connect($mysql_info['host'],$mysql_info['user'],$mysql_info['pwd'],$mysql_info['dbname']);
 	//get esf and their description
 	$query_getesf="select * from esf";
 	$result_getesf=mysqli_query($con,$query_getesf);

@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+include 'config.php';
 if(empty($_SESSION['currentid']))
 {
 	header('Location:log_in.php');
