@@ -31,7 +31,7 @@
 	<tr> <td> Description </td><td> <input type="text" name ="IncidentDescription" > </td><td> <font color="red"> </font></td></tr> 
 	<tr><td> Location:Latitude</td><td><input type="text" name="IncidentLatitude"> </td> <td><font color="red"> </font></td></tr>
 	<tr><td> Location:Longitude</td><td> <input type="text" name="IncidentLongitude"></td><td> <font color="red"> </font></td></tr>
-	<tr><td> <input type="submit" value="Submit" name="submit"></td></tr>
+	<tr><td> <input type="submit" value="Submit" name="submit"></td><td><a href="main_menu.php">Main Menu</a></td></tr>
 	</table>
 	</form>
 <script>
