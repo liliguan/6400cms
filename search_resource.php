@@ -9,6 +9,7 @@
 		$user_incident_array=array();
 		while($row_get_incident=mysqli_fetch_array($result_get_incident,MYSQLI_ASSOC)){
 			$user_incident_array[$row_get_incident['IncidentID']]=$row_get_incident['IncidentDescription'];}
+		$_SESSION[session_id()]['user_incident']=$user_incident_array;
 	} else {
 		$incident_exist=false;
 	}
