@@ -90,16 +90,7 @@
 		}
 	}
 
-	if ($query_success) {
-		echo "Add Resource Success";
-		
-	}else{
-		echo $_err;
-	}
-	mysqli_close($con);
-
-
-
+	
 ?>
 <html>
 	<head>
@@ -109,10 +100,12 @@
 	<?php
 		
 		if ($query_success) {
-			echo "Add Resource Success";	
+		echo "Add Resource Success";
 		}else{
-			echo $_err;
+		echo $_err;
 		}
+		mysqli_close($con);
+
 	 ?>	
 	</body>
 </html>

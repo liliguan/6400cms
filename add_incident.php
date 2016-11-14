@@ -84,7 +84,7 @@
 	<!-- row of incident id -->
 	<tr><td> Incident ID</td><td> <?php echo $new_id ?></td></tr>
 	<tr> <td> Date Format:yyyy-mm-dd</td> <td><input type="text" name="IncidentDate"> </td><td> <font color="red"> <?php echo $incident_date_err ?></font></td></tr>
-	<tr> <td> Description </td><td> <input type="text" name ="IncidentDescription" > </td><td> <font color="red"> <?php echo $incident_des_err ?> </font></td></tr>
+	<tr> <td> Description </td><td> <input type="text" name ="IncidentDescription" > </td><td> <font color="red"> <?php echo $incident_des_err ?> </font></td></tr> 
 	<tr><td> Location:Latitude</td><td><input type="text" name="IncidentLatitude"> </td> <td><font color="red"> <?php echo $Latitude_err?></font></td></tr>
 	<tr><td> Location:Longitude</td><td> <input type="text" name="IncidentLongitude"></td><td> <font color="red"> <?php echo $Longitude_err?></font></td></tr>
 	<tr><td> <input type="submit" value="Submit" name="submit"></td></tr>
