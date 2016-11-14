@@ -1,9 +1,7 @@
 <?php 
 session_start();
 include 'config.php';
-?>
-<html>	
-<?php 
+
 	//connect database
 	$con = mysqli_connect($mysql_info['host'],$mysql_info['user'],$mysql_info["pwd"],$mysql_info['dbname']);
 	if (!$con) {
@@ -29,6 +27,7 @@ include 'config.php';
 	}
 	mysqli_close($con);
 ?>
+<html>
 <head>
 <meta http-equiv="refresh" content="1;url=<?php echo $next_action; ?>"/>
 </head>

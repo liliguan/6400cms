@@ -12,7 +12,7 @@ mysqli_close($con);
 <!DOCTYPE html>
 <html>
 <head>
-<script type="text/javascript" src="./jq.js"></script>
+<script type="text/javascript" src="jq.js"></script>
 <head>
 <body>
 	<!--Main form -->
@@ -167,7 +167,7 @@ mysqli_close($con);
 			if( !res_empty ){
 				return;
 			}
-			res_type = check_type($(this), 'float', error_1);
+			res_type = check_type($(this), 'float', error_1) || check_type($(this,'int',error_1));
 			if( !res_type ){
 				return;
 			}
@@ -183,7 +183,7 @@ mysqli_close($con);
 			if( !res_empty ){
 				return;
 			}
-			res_type = check_type($(this), 'float', error_1);
+			res_type = check_type($(this), 'float', error_1) || check_type($(this,'int',error_1));
 			if( !res_type ){
 				return;
 			}

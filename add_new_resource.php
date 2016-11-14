@@ -103,7 +103,7 @@
 ?>
 <html>
 	<head>
-		<meta http-equiv="refresh" content="1;url=new_resrouce.php"/>
+		<meta http-equiv="refresh" content="1;url=new_resource.php"/>
 	</head>
 	<body>
 	<?php
